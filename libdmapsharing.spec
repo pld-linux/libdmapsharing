@@ -5,7 +5,7 @@
 Summary:	A DMAP client and server library
 Name:		libdmapsharing
 Version:	1.9.0.21
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
@@ -57,7 +57,8 @@ Dokumentacja API biblioteki libdmapsharing.
 
 %build
 %configure \
-	--disable-static
+	--disable-static \
+	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
 
@@ -90,5 +91,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_datadir}/gtk-doc/html/%{name}
+%{_gtkdocdir}/%{name}
 %endif
