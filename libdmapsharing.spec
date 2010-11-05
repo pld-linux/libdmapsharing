@@ -4,12 +4,12 @@
 
 Summary:	A DMAP client and server library
 Name:		libdmapsharing
-Version:	1.9.0.21
-Release:	2
+Version:	2.1.8
+Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
-# Source0-md5:	42e1bcbb0b74a76f12aa36d9c22fb820
+# Source0-md5:	88583f0c6160142567e8b521f210443b
 URL:		http://www.flyn.org/projects/libdmapsharing/index.html
 BuildRequires:	avahi-glib-devel
 BuildRequires:	glib2-devel
@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libdmapsharing.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdmapsharing.so.1
+%attr(755,root,root) %ghost %{_libdir}/libdmapsharing.so.2
 
 %files devel
 %defattr(644,root,root,755)
