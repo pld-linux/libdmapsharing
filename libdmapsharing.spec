@@ -5,7 +5,7 @@
 Summary:	A DMAP client and server library
 Name:		libdmapsharing
 Version:	2.1.8
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
