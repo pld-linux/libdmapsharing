@@ -7,12 +7,13 @@ Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
 Version:	2.9.23
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://www.flyn.org/projects/libdmapsharing/download.html
 Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
 # Source0-md5:	7e6bb71f614392e340cac782586072a7
+Patch0:		floorf.patch
 URL:		https://www.flyn.org/projects/libdmapsharing/index.html
 BuildRequires:	avahi-glib-devel >= 0.5
 BuildRequires:	gdk-pixbuf2-devel >= 2.0
@@ -93,8 +94,14 @@ Dokumentacja API biblioteki libdmapsharing.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	%{?with_static_libs:--enable-static} \
 	--with-html-dir=%{_gtkdocdir} \

@@ -1,0 +1,10 @@
+--- libdmapsharing-2.9.23/libdmapsharing/Makefile.am~	2013-06-25 13:59:23.000000000 +0200
++++ libdmapsharing-2.9.23/libdmapsharing/Makefile.am	2013-10-09 18:24:24.146585568 +0200
+@@ -60,6 +60,7 @@
+ 
+ libdmapsharing_3_0_la_LDFLAGS = \
+ 	-version-info @SO_VERSION@ \
++	-lm \
+ 	$(GLIB_LIBS) \
+ 	$(GTHREAD_LIBS) \
+ 	$(GOBJECT_LIBS) \
