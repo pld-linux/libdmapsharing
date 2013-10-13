@@ -15,6 +15,8 @@ Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
 # Source0-md5:	7e6bb71f614392e340cac782586072a7
 Patch0:		floorf.patch
 URL:		https://www.flyn.org/projects/libdmapsharing/index.html
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
 BuildRequires:	avahi-glib-devel >= 0.5
 BuildRequires:	gdk-pixbuf2-devel >= 2.0
 BuildRequires:	glib2-devel >= 1:2.36
@@ -24,10 +26,14 @@ BuildRequires:	gtk-doc >= 1.0
 #BuildRequires:	gtk+2-devel >= 2.0
 #BuildRequires:	libgee-devel >= 0.8
 BuildRequires:	libsoup-devel >= 2.32.2
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
+# not needed for releases, noinst only
+#BuildRequires:	vala >= 1:0.11.4
 BuildRequires:	zlib-devel
 Requires:	avahi-glib >= 0.5
 Requires:	glib2 >= 1:2.36
+Requires:	libsoup >= 2.32.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
