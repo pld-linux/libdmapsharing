@@ -6,20 +6,21 @@
 Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
-Version:	2.9.23
-Release:	3
+Version:	2.9.32
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://www.flyn.org/projects/libdmapsharing/download.html
 Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
-# Source0-md5:	7e6bb71f614392e340cac782586072a7
+# Source0-md5:	b0bb27525c92233bd76e5f7b7b6cfe6d
 Patch0:		floorf.patch
 URL:		https://www.flyn.org/projects/libdmapsharing/index.html
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	avahi-glib-devel >= 0.5
+BuildRequires:	avahi-glib-devel >= 0.6
 BuildRequires:	gdk-pixbuf2-devel >= 2.0
 BuildRequires:	glib2-devel >= 1:2.36
+BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.0
 # noinst programs only
@@ -31,7 +32,7 @@ BuildRequires:	pkgconfig
 # not needed for releases, noinst only
 #BuildRequires:	vala >= 1:0.11.4
 BuildRequires:	zlib-devel
-Requires:	avahi-glib >= 0.5
+Requires:	avahi-glib >= 0.6
 Requires:	glib2 >= 1:2.36
 Requires:	libsoup >= 2.32.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,7 +60,7 @@ Summary:	Files needed to develop applications using libdmapsharing
 Summary(pl.UTF-8):	Pliki niezbędne do tworzenia aplikacji wykorzystujących libdmapsharing
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	avahi-glib-devel >= 0.5
+Requires:	avahi-glib-devel >= 0.6
 Requires:	gdk-pixbuf2-devel >= 2.0
 Requires:	glib2-devel >= 1:2.36
 Requires:	gstreamer-plugins-base-devel >= 1.0
@@ -98,6 +99,19 @@ API documentation for libdmapsharing library.
 %description apidocs -l pl.UTF-8
 Dokumentacja API biblioteki libdmapsharing.
 
+%package -n vala-libdmapsharing
+Summary:	Vala API for libdmapsharing library
+Summary(pl.UTF-8):	API języka Vala do biblioteki libdmapsharing
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	vala >= 1:0.11.4
+
+%description -n vala-libdmapsharing
+Vala API for libdmapsharing library.
+
+%description -n vala-libdmapsharing -l pl.UTF-8
+API języka Vala do biblioteki libdmapsharing.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -109,6 +123,7 @@ Dokumentacja API biblioteki libdmapsharing.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	%{?with_static_libs:--enable-static} \
 	--with-html-dir=%{_gtkdocdir} \
 	--with-mdns=avahi
@@ -134,11 +149,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README README-Memory TODO
 %attr(755,root,root) %{_libdir}/libdmapsharing-3.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libdmapsharing-3.0.so.2
+%{_libdir}/girepository-1.0/DMAP-3.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdmapsharing-3.0.so
 %{_includedir}/libdmapsharing-3.0
+%{_datadir}/gir-1.0/DMAP-3.0.gir
 %{_pkgconfigdir}/libdmapsharing-3.0.pc
 
 %if %{with static_libs}
@@ -152,3 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_gtkdocdir}/libdmapsharing-3.0
 %endif
+
+%files -n vala-libdmapsharing
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/libdmapsharing-3.0.vapi
