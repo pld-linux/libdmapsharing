@@ -7,7 +7,7 @@ Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
 Version:	2.9.32
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://www.flyn.org/projects/libdmapsharing/download.html
@@ -105,6 +105,9 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libdmapsharing
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 1:0.11.4
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n vala-libdmapsharing
 Vala API for libdmapsharing library.
