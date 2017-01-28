@@ -6,13 +6,13 @@
 Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
-Version:	2.9.32
-Release:	3
+Version:	2.9.37
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://www.flyn.org/projects/libdmapsharing/download.html
 Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
-# Source0-md5:	b0bb27525c92233bd76e5f7b7b6cfe6d
+# Source0-md5:	80adb0a653980513e216d910824a829a
 Patch0:		floorf.patch
 URL:		https://www.flyn.org/projects/libdmapsharing/index.html
 BuildRequires:	autoconf >= 2.50
@@ -26,7 +26,7 @@ BuildRequires:	gtk-doc >= 1.0
 # noinst programs only
 #BuildRequires:	gtk+2-devel >= 2.0
 #BuildRequires:	libgee-devel >= 0.8
-BuildRequires:	libsoup-devel >= 2.32.2
+BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 # not needed for releases, noinst only
@@ -34,7 +34,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	zlib-devel
 Requires:	avahi-glib >= 0.6
 Requires:	glib2 >= 1:2.36
-Requires:	libsoup >= 2.32.2
+Requires:	libsoup >= 2.48.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
