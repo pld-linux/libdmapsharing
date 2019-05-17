@@ -1,23 +1,25 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
+%bcond_with	check		# check/testing support (note: library links with libcheck!)
 %bcond_without	static_libs	# static library build
 
 Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
-Version:	2.9.39
+Version:	3.9.6
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://www.flyn.org/projects/libdmapsharing/download.html
 Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
-# Source0-md5:	70eacb930147f703b39aa12c089d6ca1
+# Source0-md5:	7043d7c0af3472ade24e896b5b749224
 Patch0:		floorf.patch
 URL:		https://www.flyn.org/projects/libdmapsharing/index.html
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	avahi-glib-devel >= 0.6
+%{?with_check:BuildRequires:	check-devel >= 0.12}
 BuildRequires:	gdk-pixbuf2-devel >= 2.0
 BuildRequires:	glib2-devel >= 1:2.36
 BuildRequires:	gobject-introspection-devel >= 1.30.0
@@ -124,13 +126,15 @@ API języka Vala do biblioteki libdmapsharing.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
+	%{!?with_check:--disable-check} \
 	--disable-silent-rules \
 	%{?with_static_libs:--enable-static} \
+	%{!?with_check:--disable-tests} \
 	--with-html-dir=%{_gtkdocdir} \
 	--with-mdns=avahi
 
@@ -138,11 +142,12 @@ API języka Vala do biblioteki libdmapsharing.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	INSTALL="install -p" \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libdmapsharing-3.0.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libdmapsharing-4.0.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -153,29 +158,29 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README README-Memory TODO
-%attr(755,root,root) %{_libdir}/libdmapsharing-3.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdmapsharing-3.0.so.2
-%{_libdir}/girepository-1.0/DMAP-3.0.typelib
+%attr(755,root,root) %{_libdir}/libdmapsharing-4.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libdmapsharing-4.0.so.3
+%{_libdir}/girepository-1.0/Dmap-4.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libdmapsharing-3.0.so
-%{_includedir}/libdmapsharing-3.0
-%{_datadir}/gir-1.0/DMAP-3.0.gir
-%{_pkgconfigdir}/libdmapsharing-3.0.pc
+%attr(755,root,root) %{_libdir}/libdmapsharing-4.0.so
+%{_includedir}/libdmapsharing-4.0
+%{_datadir}/gir-1.0/Dmap-4.0.gir
+%{_pkgconfigdir}/libdmapsharing-4.0.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libdmapsharing-3.0.a
+%{_libdir}/libdmapsharing-4.0.a
 %endif
 
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/libdmapsharing-3.0
+%{_gtkdocdir}/libdmapsharing-4.0
 %endif
 
 %files -n vala-libdmapsharing
 %defattr(644,root,root,755)
-%{_datadir}/vala/vapi/libdmapsharing-3.0.vapi
+%{_datadir}/vala/vapi/libdmapsharing-4.0.vapi
