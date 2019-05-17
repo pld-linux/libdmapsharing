@@ -6,13 +6,13 @@
 Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
-Version:	2.9.37
+Version:	2.9.39
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://www.flyn.org/projects/libdmapsharing/download.html
 Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
-# Source0-md5:	80adb0a653980513e216d910824a829a
+# Source0-md5:	70eacb930147f703b39aa12c089d6ca1
 Patch0:		floorf.patch
 URL:		https://www.flyn.org/projects/libdmapsharing/index.html
 BuildRequires:	autoconf >= 2.50
