@@ -7,26 +7,25 @@
 Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
-Version:	3.9.7
+Version:	3.9.10
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-#Source0Download: https://www.flyn.org/projects/libdmapsharing/download.html
 Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
-# Source0-md5:	090e7b4da5c6aaadde36d34bac060b11
+# Source0-md5:	6286e01ba3f628f4b85e05a55a391621
 Patch0:		floorf.patch
-URL:		https://www.flyn.org/projects/libdmapsharing/index.html
+URL:		https://www.flyn.org/projects/libdmapsharing/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	avahi-glib-devel >= 0.6
 %{?with_check:BuildRequires:	check-devel >= 0.12}
 BuildRequires:	gdk-pixbuf2-devel >= 2.0
-BuildRequires:	glib2-devel >= 1:2.36
+BuildRequires:	glib2-devel >= 1:2.40
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.0
 # noinst programs only
-#BuildRequires:	gtk+2-devel >= 2.0
+#BuildRequires:	gtk+3-devel >= 3.0
 #BuildRequires:	libgee-devel >= 0.8
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool
@@ -35,7 +34,7 @@ BuildRequires:	pkgconfig
 #BuildRequires:	vala >= 1:0.11.4
 BuildRequires:	zlib-devel
 Requires:	avahi-glib >= 0.6
-Requires:	glib2 >= 1:2.36
+Requires:	glib2 >= 1:2.40
 Requires:	libsoup >= 2.48.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -64,7 +63,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	avahi-glib-devel >= 0.6
 Requires:	gdk-pixbuf2-devel >= 2.0
-Requires:	glib2-devel >= 1:2.36
+Requires:	glib2-devel >= 1:2.40
 Requires:	gstreamer-plugins-base-devel >= 1.0
 Requires:	libsoup-devel >= 2.32.2
 
@@ -94,7 +93,7 @@ Statyczna biblioteka libdmapsharing.
 Summary:	libdmapsharing API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libdmapsharing
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -110,7 +109,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libdmapsharing
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 1:0.11.4
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
