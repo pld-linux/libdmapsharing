@@ -93,9 +93,7 @@ Statyczna biblioteka libdmapsharing.
 Summary:	libdmapsharing API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libdmapsharing
 Group:		Documentation
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for libdmapsharing library.
@@ -109,9 +107,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libdmapsharing
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 1:0.11.4
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libdmapsharing
 Vala API for libdmapsharing library.
