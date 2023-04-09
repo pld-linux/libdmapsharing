@@ -7,12 +7,12 @@
 Summary:	A DMAP client and server library
 Summary(pl.UTF-8):	Biblioteka klienta i serwera DMAP
 Name:		libdmapsharing
-Version:	3.9.10
+Version:	3.9.12
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://www.flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
-# Source0-md5:	6286e01ba3f628f4b85e05a55a391621
+# Source0-md5:	68bba78f7354e242b1ec8c24126c244a
 Patch0:		floorf.patch
 URL:		https://www.flyn.org/projects/libdmapsharing/
 BuildRequires:	autoconf >= 2.50
@@ -20,22 +20,22 @@ BuildRequires:	automake
 BuildRequires:	avahi-glib-devel >= 0.6
 %{?with_check:BuildRequires:	check-devel >= 0.12}
 BuildRequires:	gdk-pixbuf2-devel >= 2.0
-BuildRequires:	glib2-devel >= 1:2.40
+BuildRequires:	glib2-devel >= 1:2.66
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0
 BuildRequires:	gtk-doc >= 1.0
 # noinst programs only
 #BuildRequires:	gtk+3-devel >= 3.0
 #BuildRequires:	libgee-devel >= 0.8
-BuildRequires:	libsoup-devel >= 2.48.0
-BuildRequires:	libtool
+BuildRequires:	libsoup3-devel >= 3.0
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
 # not needed for releases, noinst only
 #BuildRequires:	vala >= 1:0.11.4
 BuildRequires:	zlib-devel
 Requires:	avahi-glib >= 0.6
-Requires:	glib2 >= 1:2.40
-Requires:	libsoup >= 2.48.0
+Requires:	glib2 >= 1:2.66
+Requires:	libsoup3 >= 3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,9 +63,9 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	avahi-glib-devel >= 0.6
 Requires:	gdk-pixbuf2-devel >= 2.0
-Requires:	glib2-devel >= 1:2.40
+Requires:	glib2-devel >= 1:2.66
 Requires:	gstreamer-plugins-base-devel >= 1.0
-Requires:	libsoup-devel >= 2.32.2
+Requires:	libsoup3-devel >= 3.0
 
 %description devel
 libdmapsharing implements the DMAP protocols. This includes support
